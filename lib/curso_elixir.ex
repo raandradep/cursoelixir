@@ -25,7 +25,6 @@ defmodule CursoElixir do
     :world
   end
 
-<<<<<<< HEAD
   def sumar([head | tail] \\ @numeros, suma \\ 0) do
     resultado = suma + head
     sumar(tail, resultado)
@@ -150,8 +149,5 @@ defmodule CursoElixir do
       fibonacci(numero - 2) +  fibonacci(numero - 1) 
      end
   end  
-=======
-
->>>>>>> de224c18a5bcbdc9f5e4c965678aa8858f1d38a1
-  
+ 
 end
