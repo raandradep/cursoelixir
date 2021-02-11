@@ -16,15 +16,15 @@ defmodule TriangulePascal do
 
     print_row = fn(row) ->
       line = 0..row
-      |> IO.inspect(label: "1111")
-      |> Enum.map(fn x -> binomial_coefficients(row, x) |> IO.inspect(label: "2222") end)
-      |> IO.inspect(label: "3333")
+      #|> IO.inspect(label: "1111")
+      |> Enum.map(fn x -> binomial_coefficients(row, x)  end) #|> IO.inspect(label: "2222"
+      #|> IO.inspect(label: "3333")
       |> Enum.join(" ") #[1,2,3] -> 1-2-3
-      |> IO.inspect(label: "444")
+      #|> IO.inspect(label: "444")
       IO.puts line
     end
 
-    0..k-1 |> IO.inspect(label: "555") |> Enum.map(fn x -> print_row.(x) end) |> IO.inspect(label: "555")
+    0..k-1 |>  Enum.map(fn x -> print_row.(x) end)
   end
 
   def binomial_coefficients(n, r) do
@@ -34,7 +34,7 @@ defmodule TriangulePascal do
   end
 
   def factorial(0), do: 1
-  def factorial(n) when n > 0, do: n * factorial(n - 1) |> IO.inspect(label: "6666")
+  def factorial(n) when n > 0, do: n * factorial(n - 1)
 
 
 

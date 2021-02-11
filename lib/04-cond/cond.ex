@@ -57,7 +57,6 @@ result =
     hd([false, "33", 4]) == false -> "false works as a true"
   end
 IO.puts(result)
-<<<<<<< HEAD
 
 result =
   cond do
@@ -67,5 +66,3 @@ result =
      true -> nil #Neede when resto of cases are false
   end
 IO.puts(result) #error
-=======
->>>>>>> de224c18a5bcbdc9f5e4c965678aa8858f1d38a1
