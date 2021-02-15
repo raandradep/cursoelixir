@@ -11,11 +11,11 @@ defmodule Ejercicios3 do
   end
 
 
-  def sumatoria_r(res \\ 1, n) do
-    res = res + 1;
-    if res <= n do
-      sumatoria_r(res,n)
-    end
+  def sumatoria_r(c , res, n) when c > n, do: res
+  def sumatoria_r(c \\ 1, res \\ 0, n ) when c <= n do
+    res = res + c;
+    c = c + 1
+    sumatoria_r(c , res, n)
   end
 
 
@@ -26,7 +26,7 @@ defmodule Ejercicios3 do
 
   def fibo_opt(n) when is_integer(n) and n > 0, do: fibo_p(n, 0, 1)
   defp fibo_p(1, _ , b), do: b
-  # defp fibo_p(_n, a, b), do: fibo_p(_n  -1, b, a + b )
+  defp fibo_p(n, a, b), do: fibo_p(n - 1, b, a + b )
 
 
   def f(a, b) when is_binary(a) or is_binary(b),  do: {:error,"valor de las entradas debe ser entero"}
