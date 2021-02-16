@@ -25,4 +25,26 @@ defmodule Concat do
       search_list(tail, caracter)
     end
   end
+
+
+  def unir(str_in1, str_in2) do
+    lista_in1 = String.codepoints(str_in1)
+    lista_in2 = String.codepoints(str_in2)
+    unir_r(lista_in1,lista_in2)
+  end
+  defp unir_r(_, _, _new_str \\ "")
+  defp unir_r([], [], new_str ), do: IO.puts(new_str)
+  defp unir_r([], [head2 | tail2], new_str) do
+    new_str = new_str <> "" <> head2
+    unir_r([], tail2,new_str)
+  end
+  defp unir_r([head | tail], [], new_str ) do
+    new_str = new_str <> head <> ""
+    unir_r(tail, [],new_str)
+  end
+  defp unir_r([head | tail], [head2 | tail2], new_str ) do
+    new_str = new_str <> head <> head2
+    unir_r(tail, tail2,new_str)
+  end
+
 end
