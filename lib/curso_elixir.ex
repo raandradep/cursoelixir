@@ -85,22 +85,18 @@ defmodule CursoElixir do
 
 
 
-  # def triangulo_pascal(linea \\ 1, n) when is_number(n) do
-  #    triangulo_pascal_int(linea)
-  #   if linea < n do
-  #     linea = linea + 1
-  #     triangulo_pascal(linea, n)
-  #   end
+  # def triangulo_pascal(linea \\ 1, n) when is_number(n)  do
+  #   1..n |> Enum.map(fn x -> triangulo_pascal_int(x) end) |> Enum.join(" \n") |> IO.puts
   # end
 
-  # def triangulo_pascal_int(i \\ 1, c \\ 1, linea) do
+  # def triangulo_pascal_int(i \\ 1, c \\ 1, linea) when i = linea, do:
+  # def triangulo_pascal_int(i \\ 1, c \\ 1, linea) when i < linea do
   #   {val,_} = Integer.parse("#{c}")
-  #   IO.puts("#{linea} ---> #{val}")
+  #   IO.puts(val)
   #   c = c * (linea - i) / i
-  #   if i < linea do
-  #     i = i + 1
-  #     triangulo_pascal_int(i, c,  linea)
-  #   end
+  #   i = i + 1
+  #   triangulo_pascal_int(i, c,  linea)
+
   # end
 #   def triangulo_pascal(n) when is_binary(n) do
 #     IO.puts("La entrada de la funcion debe ser un valor entero")
