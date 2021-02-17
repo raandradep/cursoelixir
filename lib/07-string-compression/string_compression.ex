@@ -13,13 +13,13 @@ defmodule StringCompression do
     |> List.to_string()
     |> IO.inspect(label: "4 ->>>")
 
-    List.to_string(
-      Enum.map(
-        Enum.chunk_by(
-          String.codepoints(string),
-           fn x -> x end),
-            fn x -> "#{List.first(x)}" <> "#{if Enum.count(x) == 1, do: "", else: Enum.count(x)}"
-      end)
-    )
+    # List.to_string(
+    #   Enum.map(
+    #     Enum.chunk_by(
+    #       String.codepoints(string),
+    #        fn x -> x end),
+    #         fn x -> "#{List.first(x)}" <> "#{if Enum.count(x) == 1, do: "", else: Enum.count(x)}"
+    #   end)
+    # )
   end
 end
