@@ -69,4 +69,26 @@ defmodule Concat do
     end
   end
 
+  def intercalar_dos_caracteres(strin) do
+    strin
+    |>String.codepoints
+    |>Enum.chunk_every(2)
+    |>Enum.map(&(Ejercicios4.reverse(&1)))
+    |>List.to_string
+  end
+
+  def super_digit(num) do
+     lista = String.codepoints("#{num}") |> Enum.map(&(String.to_integer(&1)))
+     suma_recursiva(lista)
+  end
+
+
+  defp suma_recursiva(lista) when length(lista) == 1, do:  IO.inspect(lista,label: "-->");
+  defp suma_recursiva(lista) when length(lista) > 1 do
+     IO.inspect(lista, label: "-->")
+     val = Enum.sum(lista);
+     lista = String.codepoints("#{val}") |> Enum.map(&(String.to_integer(&1)))
+     suma_recursiva(lista)
+  end
+
 end
