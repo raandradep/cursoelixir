@@ -19,12 +19,10 @@ defmodule Concat do
   end
 
   def search_list([], _caracter), do: false
-
   def search_list([head | tail], caracter) do
-    if(caracter == head) do
-      true
-    else
-      search_list(tail, caracter)
+    cond do
+      caracter == head -> true
+      true -> search_list(tail, caracter)
     end
   end
 
@@ -52,43 +50,61 @@ defmodule Concat do
     unir_r(tail, tail2, new_str)
   end
 
-
   def compression(str_in) do
     lista_caracteres = String.codepoints(str_in)
+
     lista_caracteres
-    |> Enum.chunk_by(&(&1))
-    |> Enum.map(&(validar_length(&1)))
-    |> Enum.reduce(&(&2<>&1))
+    |> Enum.chunk_by(& &1)
+    |> Enum.map(&validar_length(&1))
+    |> Enum.reduce(&(&2 <> &1))
   end
 
   defp validar_length(list) do
-    {head,tam} =  { hd(list), length(list)}
+    {head, tam} = {hd(list), length(list)}
+
     cond do
       tam == 1 -> "#{head}"
-      true ->     "#{head}#{tam}"
+      true -> "#{head}#{tam}"
     end
   end
 
   def intercalar_dos_caracteres(strin) do
     strin
-    |>String.codepoints
-    |>Enum.chunk_every(2)
-    |>Enum.map(&(Ejercicios4.reverse(&1)))
-    |>List.to_string
+    |> String.codepoints()
+    |> Enum.chunk_every(2)
+    |> Enum.map(&Ejercicios4.reverse(&1))
+    |> List.to_string()
   end
 
   def super_digit(num) do
-     lista = String.codepoints("#{num}") |> Enum.map(&(String.to_integer(&1)))
-     suma_recursiva(lista)
+    lista = String.codepoints(to_string(num)) |> Enum.map(&String.to_integer(&1))
+    suma_recursiva(lista)
   end
 
+  defp suma_recursiva(lista) when length(lista) == 1, do: IO.inspect(lista, label: "-->")
 
-  defp suma_recursiva(lista) when length(lista) == 1, do:  IO.inspect(lista,label: "-->");
   defp suma_recursiva(lista) when length(lista) > 1 do
-     IO.inspect(lista, label: "-->")
-     val = Enum.sum(lista);
-     lista = String.codepoints("#{val}") |> Enum.map(&(String.to_integer(&1)))
-     suma_recursiva(lista)
+    IO.inspect(lista, label: "-->")
+    num = Enum.sum(lista)
+    lista = String.codepoints(to_string(num)) |> Enum.map(&String.to_integer(&1))
+    suma_recursiva(lista)
   end
 
+  def intercepcion(lista1, lista2) do
+    cond do
+      length(lista2) > length(lista1) ->  intercepcion_r(lista2, lista1)
+      true -> intercepcion_r(lista1, lista2)
+    end
+  end
+
+  def intercepcion_r(_lista1, _lista2, _pos \\ 0, new_list \\ [])
+  def intercepcion_r([], _lista2, _pos, new_list), do: new_list
+  def intercepcion_r(_lista1, [],_poS, new_list), do: new_list
+  def intercepcion_r([head | tail], lista,pos , new_list)  do
+    cond do
+      search_list(lista, head) -> intercepcion_r(tail, lista, pos + 1, new_list)
+      true -> intercepcion_r(tail, lista, pos + 1,  new_list ++ [head])
+    end
+
+  end
 end
