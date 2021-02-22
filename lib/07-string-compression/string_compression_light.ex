@@ -1,4 +1,19 @@
 defmodule StringCompressioLight do
+  @moduledoc """
+  This function return string compression
+
+  ## Example
+
+      iex> StringCompressioLight.compression("aaabbbccc")
+      "a3b3c3"
+
+  """
+
+  @doc """
+  Calculate Compression String
+
+  
+  """
   @spec compression(String.t()) :: String.t()
   def compression(string) do
     list_text = string

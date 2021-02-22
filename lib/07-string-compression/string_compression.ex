@@ -21,5 +21,44 @@ defmodule StringCompression do
     #         fn x -> "#{List.first(x)}" <> "#{if Enum.count(x) == 1, do: "", else: Enum.count(x)}"
     #   end)
     # )
+
+
   end
+
+  def function() do
+    a =2
+    if 3 > 3 do
+      a = 1000
+      IO.puts("aqui no entra")
+    else
+      a = 9000
+      IO.puts("aqui si entra")
+    end
+
+    a # 2
+  end
+
+  def function2() do
+    valor = if 3 > 3 do
+      IO.puts("aqui no entra")
+      1000
+    else
+      IO.puts("aqui si entra")
+      9000
+    end
+    {:ok, valor}
+  end
+
+  def function2!() do
+   if 3 > 3 do
+    {"aqui no entra", 1000}
+  else
+      list = Enum.map(1..100_000, &(&1 +2))
+      IO.inspect(list, limit: :infinity)
+      {"aqui si entra", 9000}
+    end
+  end
+
+  def function2?(), do: 3 > 3
+
 end
