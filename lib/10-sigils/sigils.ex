@@ -41,25 +41,27 @@ defmodule Sigils do
 
   def calendar_date_sigils() do
     # YYYYMMDD
-    d = ~D[2021-02-22]
-    {d.day, d.month, d.year}
+    # d = ~D[2021-02-22]
+    # {d.day, d.month, d.year}
+    %Date{day: day, month: month, year: year}= ~D[2021-02-22]
+    {day, month, year}
   end
 
   def calendar_time_sigils() do
     # t = ~T[23:42:05]
-    t = ~T[09:42:05]
+    t = ~T[09:42:05] #Time
     {t.second, t.minute, t.hour}
   end
 
   def calendar_date_time_sigils() do\
     #NaiveDateTime
-    dt = ~N[2021-02-22 09:48:07]
+    dt = ~N[2021-02-22 09:48:07] #NaiveDateTime
     {dt.day, dt.month, dt.year, dt.second, dt.minute, dt.hour}
   end
 
   def calendar_date_time_sigils3() do\
     #UTCDateTime
-    dt = ~U[2021-02-22 09:48:07.090789Z]
+    dt = ~U[2021-02-22 09:48:07.090789Z] #DateTime
     {dt.day, dt.month, dt.year, dt.second, dt.minute, dt.hour, dt.time_zone}
   end
 
