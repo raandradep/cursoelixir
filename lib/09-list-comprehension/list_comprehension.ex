@@ -49,8 +49,18 @@ defmodule ListComprehension do
   end
 
   def list8() do
-    import Integer
+    import Integer # no es recomendable como buena practica colocar imports, alias dentro de funciones
     for n <- 1..100, is_even(n), rem(n, 3) == 0 and n > 50, do: IO.puts(n)
+  end
+
+  def list9() do
+    list = ~w{carro moto avion}
+    for x <- list, x != "avion",x != "avion",x != "avion",x != "avion",x != "avion",x != "avion",x != "avion",x != "avion",x != "avion",x != "avion", into: %{}, do: {x, ~s{#{x} soy una concatenacion con "multiples" comillas}}
+  end
+
+  def list10(list_word) do
+    word = for c <- list_word, into: "", do: <<c>>
+    {:ok, :list10, word}
   end
 
 end
