@@ -1,4 +1,4 @@
-defmodule Concat do
+defmodule ConcatRami do
   def reduction(str) do
     lista_caracteres = String.codepoints(str)
     reduction_r(lista_caracteres)
