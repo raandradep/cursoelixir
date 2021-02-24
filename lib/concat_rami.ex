@@ -33,7 +33,7 @@ defmodule ConcatRami do
   end
 
   defp unir_r(_, _, _new_str \\ "")
-  defp unir_r([], [], new_str), do: IO.puts(new_str)
+  defp unir_r([], [], new_str), do: new_str
 
   defp unir_r([], [head2 | tail2], new_str) do
     new_str = new_str <> "" <> head2
@@ -107,4 +107,18 @@ defmodule ConcatRami do
     end
 
   end
+
+
+
+  def ordenar_letras_abc(strin) do
+    strin
+    |> String.replace("c", "c|")        |> IO.inspect(label: "replace -->")
+    |> String.split("|")                |> IO.inspect(label: "split -->")
+    |> Enum.map(&String.codepoints(&1)) |> IO.inspect(label: "codepoints & map -->")
+    |> Enum.map(&Enum.sort(&1))         |> IO.inspect(label: "sort & map -->")
+    |> Enum.join()
+  end
+
+
+
 end

@@ -5,7 +5,7 @@ use Application
 
     children = [
       Cron.Programacion,
-      CursoElixir.Repo,
+      #CursoElixir.Repo,
     ]
 
     opts = [strategy: :one_for_one, name: CursoElixir.Supervisor]
