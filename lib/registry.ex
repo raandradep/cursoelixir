@@ -9,15 +9,15 @@ defmodule Registry do
   @impl true
   def handle_call({:lookup, name}, _from, map_names) do
     #{:reply, resultado de la busqueda, mapa }
-    {:reply, Map.fetch(map_names, name), map_names}
+    {:reply, Map.fetch(map_names, name), map_names} #sync
   end
 
   @impl true
   def handle_cast({:create, name, valor}, map_names) do
     if Map.has_key?(map_names, name) do
-      {:noreply, name}
+      {:noreply, name} #async
     else
-      {:noreply, Map.put(map_names, name, valor)}
+      {:noreply, Map.put(map_names, name, valor)} #async
     end
   end
 

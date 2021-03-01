@@ -19,4 +19,15 @@ defmodule KV do
 
   def factorial(0), do: 1
   def factorial(n) when n > 0, do: n * factorial(n - 1) |> IO.inspect(label: "6666")
+
+
+
+  def application do
+    [ mod: {CursoElixirDb.Application, []},
+      extra_applications: applications(Mix.env)
+    ]
+  end
+
+  defp applications(:test), do: [:logger, :runtime_tools, :postgrex]
+  defp applications(_), do: [:logger, :runtime_tools]
 end
