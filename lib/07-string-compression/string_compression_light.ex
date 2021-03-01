@@ -1,4 +1,4 @@
-defmodule StringCompressioLight do
+defmodule StringCompressionLight do
   @moduledoc """
   This function return string compression
 
@@ -12,7 +12,7 @@ defmodule StringCompressioLight do
   @doc """
   Calculate Compression String
 
-  
+
   """
   @spec compression(String.t()) :: String.t()
   def compression(string) do
