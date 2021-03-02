@@ -1,4 +1,4 @@
-defmodule Registry do
+defmodule CursoElixir.Registry do
   use GenServer
 
   # @interval 5 * 60 * 1000

@@ -6,7 +6,7 @@ defmodule CusoElixir.Application do
     # Although we don't use the supervisor name below directly,
     # it can be useful when debugging or introspecting the system.
     children = [
-      {Registry, name: Registry}
+      {CursoElixir.Registry, name: CursoElixir.Registry}
     ]
 
     opts = [strategy: :one_for_one, name: CusoElixir.Supervisor]

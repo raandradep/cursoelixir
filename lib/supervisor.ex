@@ -8,7 +8,7 @@ defmodule CusoElixir.Supervisor do
   @impl true
   def init(:ok) do
     children = [
-      {Registry, name: Registry}
+      {CursoElixir.Registry, name: CursoElixir.Registry}
     ]
 
     Supervisor.init(children, strategy: :one_for_one)
