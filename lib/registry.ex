@@ -1,9 +1,13 @@
 defmodule Registry do
   use GenServer
 
+  # @interval 5 * 60 * 1000
+
   @impl true
-  def init(:ok) do
-    {:ok, %{}}
+  def init(_) do
+    # Process.send_after(self(), :call_free_service, @interval)
+    set = MapSet.new()
+    {:ok, set}
   end
 
   @impl true
@@ -11,6 +15,14 @@ defmodule Registry do
     #{:reply, resultado de la busqueda, mapa }
     {:reply, Map.fetch(map_names, name), map_names} #sync
   end
+  # def handle_call({:lookup_2, name}, _from, map_names) do
+  #   #{:reply, resultado de la busqueda, mapa }
+  #   {:reply, Map.fetch(map_names, name), map_names} #sync
+  # end
+  # def handle_call({:lookup_3, name}, _from, map_names) do
+  #   #{:reply, resultado de la busqueda, mapa }
+  #   {:reply, Map.fetch(map_names, name), map_names} #sync
+  # end
 
   @impl true
   def handle_cast({:create, name, valor}, map_names) do
@@ -21,15 +33,24 @@ defmodule Registry do
     end
   end
 
+  # def handle_info({:create, name, valor}, map_names) do
+  #   if Map.has_key?(map_names, name) do
+  #     {:noreply, name} #async
+  #   else
+  #     {:noreply, Map.put(map_names, name, valor)} #async
+  #   end
+  # end
+
   @doc """
   Inicio el Genserver de Registry
   """
-  def start_link(opts) do
-    GenServer.start_link(__MODULE__, :ok, opts)
+  def start_link(_) do
+    # GenServer.start_link(Registry, :ok, name: Registry)
+    GenServer.start_link(__MODULE__, :ok, name: __MODULE__)
   end
 
   def lookup(server, name) do
-    GenServer.call(server, {:lookup,name})
+    GenServer.call(server, {:lookup, name})
   end
 
   def create(server, name, valor) do
