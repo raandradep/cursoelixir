@@ -15,9 +15,7 @@ defmodule CursoElixir.MixProject do
   def application do
     [
       mod: {CursoElixir.Application, []},
-      extra_applications: [:logger , :httpoison]
-
-
+      extra_applications: [:logger , :httpoison, :observer, :wx]
     ]
   end
 
